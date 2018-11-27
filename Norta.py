@@ -144,7 +144,7 @@ class Norta(object):
                             break
                     self.C[dim1,dim2] = r
                     self.C[dim2,dim1] = r
-        print("Calculated correlataion:\n",self.C)
+        #print("Calculated correlataion:\n",self.C)
         self._generate_L()
 
     def _generate_correlation_matrix(self,data,porcentaje = 0.1, muestra = 10000):

@@ -123,7 +123,6 @@ class Norta(object):
                 if dim1 < dim2 and dim1 != dim2:
                     W1 = np.random.normal(0, 1, (muestra))
                     W2 = np.random.normal(0, 1, (muestra))
-                    print(Corr[dim1][dim2])
                     rho = Corr[dim1][dim2]
                     if rho < 0:
                         l = -1
@@ -144,7 +143,7 @@ class Norta(object):
                             break
                     self.C[dim1,dim2] = r
                     self.C[dim2,dim1] = r
-        #print("Calculated correlataion:\n",self.C)
+        print("Calculated correlation:\n",self.C)
         self._generate_L()
 
     def _generate_correlation_matrix(self,data,porcentaje = 0.1, muestra = 10000):
@@ -284,12 +283,14 @@ class Norta(object):
         else:
             n = len(self.fit_contenedor)
         W = np.random.normal(0, 1, (n,m))
+        print(W)
         Z = np.dot(self.L,W)
         if n==1:
             Z = Z.reshape((-1, 1)) 
         else:
             Z = Z.T
         X = np.empty([m, n])
+        print(Z)
         for dimension in range(n):
             X[:,dimension] = self._return_coresponding_distribution(dimension,Z[:,dimension])
         return X

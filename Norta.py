@@ -57,28 +57,28 @@ class Norta(object):
                 print("Uniform function successfully added")
             else:
                 print("Error when adding function to Norta")
-                print("Remember that to add a uniform function as arg and kwargs: set_marginal('uniform',a=,b=")
+                print("Remember that to add a uniform function as arg and kwargs: set_marginal('uniform',a=,b=)")
         elif args[0] == 'gamma':
             if ('mu' in kwargs):
                 self.contenedor.append({'function':gamma,'a':kwargs.get('a')})
                 print("Gamma function successfully added")
             else:
                 print("Error when adding function to Norta")
-                print("Remember that to add a gamma function as arg and kwargs: set_marginal('gamma',a=")
+                print("Remember that to add a gamma function as arg and kwargs: set_marginal('gamma',a=)")
         elif args[0] == 'erlang':
             if ('mu' in kwargs):
                 self.contenedor.append({'function':erlang,'mu':kwargs.get('mu')})
                 print("Erlang function successfully added")
             else:
                 print("Error when adding function to Norta")
-                print("Remember that to add a erlang function as arg and kwargs: set_marginal('erlang',mu=")
+                print("Remember that to add a erlang function as arg and kwargs: set_marginal('erlang',mu=)")
         elif args[0] == 'poisson':
             if ('mu' in kwargs):
                 self.contenedor.append({'function':poisson,'mu':kwargs.get('mu')})
                 print("Poisson function successfully added")
             else:
                 print("Error when adding function to Norta")
-                print("Remember that to add a poisson function as arg and kwargs: set_marginal('poisson',mu=")
+                print("Remember that to add a poisson function as arg and kwargs: set_marginal('poisson',mu=)")
         else:
             print("Function does not exist in this implementation")
         
@@ -283,14 +283,12 @@ class Norta(object):
         else:
             n = len(self.fit_contenedor)
         W = np.random.normal(0, 1, (n,m))
-        print(W)
         Z = np.dot(self.L,W)
         if n==1:
             Z = Z.reshape((-1, 1)) 
         else:
             Z = Z.T
         X = np.empty([m, n])
-        print(Z)
         for dimension in range(n):
             X[:,dimension] = self._return_coresponding_distribution(dimension,Z[:,dimension])
         return X
